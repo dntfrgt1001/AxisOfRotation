@@ -8,8 +8,12 @@
 
 #include "CalcAxis.h"
 
-CalcAxis::CalcAxis(cv::Size frameSize, bool left, bool up, float dx, float shift):
-frameSize(frameSize), left(left), up(up), dx(dx), shift(shift)
+CalcAxis::CalcAxis(cv::Size frameSize,
+                   cv::vector<cv::Point2f>* start,
+                   cv::vector<cv::Point2f>* end,
+                   bool left, bool up, float dx, float shift):
+frameSize(frameSize), start(start), end(end),
+left(left), up(up), dx(dx), shift(shift)
 {
     
 }
@@ -19,6 +23,7 @@ void CalcAxis::setOpticalflow(cv::vector<cv::Point2f>* start,
     this->start = start;
     this->end = end;
 }
+
 
 int CalcAxis::calcAxis(){
     int prevLeft = minLeft;

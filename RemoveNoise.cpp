@@ -8,10 +8,13 @@
 
 #include "RemoveNoise.h"
 
-RemoveNoise::RemoveNoise(cv::Size frameSize, bool left, bool up,
+RemoveNoise::RemoveNoise(cv::Size frameSize,
+                         cv::vector<cv::Point2f>* start,
+                         cv::vector<cv::Point2f>* end,
+                         bool left, bool up,
                          int threshNorm, int threshNum):
-frameSize(frameSize), left(left), up(up),
-threshNorm(threshNorm), threshNum(threshNum)
+frameSize(frameSize), start(start), end(end),
+left(left), up(up), threshNorm(threshNorm), threshNum(threshNum)
 {
     
 }

@@ -14,7 +14,10 @@
 
 class RemoveNoise{
 public:
-    RemoveNoise(cv::Size frameSize, bool left, bool up,
+    RemoveNoise(cv::Size frameSize,
+                cv::vector<cv::Point2f>* start,
+                cv::vector<cv::Point2f>* end,
+                bool left, bool up,
                 int threshNorm, int threshNum);
     ~RemoveNoise(){};
     void setOpticalflow(cv::vector<cv::Point2f>* start,

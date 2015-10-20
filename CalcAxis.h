@@ -14,7 +14,10 @@
 
 class CalcAxis{
 public:
-    CalcAxis(cv::Size frameSize, bool left, bool up,
+    CalcAxis(cv::Size frameSize,
+             cv::vector<cv::Point2f>* start,
+             cv::vector<cv::Point2f>* end,
+             bool left, bool up,
              float dx, float shift);
     ~CalcAxis(){};
     
