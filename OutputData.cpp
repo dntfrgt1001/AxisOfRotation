@@ -8,7 +8,7 @@
 
 #include "OutputData.hpp"
 
-OutputData::OutputData(std::string fileName, char seperater):
+OutputData::OutputData(const std::string fileName, char seperater):
 fileName(fileName), seperater(seperater)
 {
     ofs.open(fileName);
@@ -17,6 +17,12 @@ fileName(fileName), seperater(seperater)
 OutputData::~OutputData()
 {
     ofs.close();
+}
+
+OutputData::OutputData(const OutputData& od):
+fileName(od.fileName), seperater(od.seperater)
+{
+    ofs.open(fileName);
 }
 
 void OutputData::outputTwin(int first, int second)

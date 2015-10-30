@@ -8,27 +8,32 @@
 
 #include "CalcDeviationQuarter.hpp"
 
-CalcDeviationQuarter::CalcDeviationQuarter(cv::Size frameSize,
-                                           cv::vector<cv::Point2f>& start,
-                                           cv::vector<cv::Point2f>& end,
-                                           int dx, int shift, bool left, bool up):
-CalcDeviationHalf(frameSize, start, end, dx, shift, left), up(up)
+CalcDeviationQuarter::CalcDeviationQuarter(cv::Size& frameSize,
+                                           int dx, int shift,
+                                           bool left, bool up):
+CalcDeviationHalf(frameSize, dx, shift, left), up(up)
 {
 }
 
-bool CalcDeviationQuarter::isInWindow(const cv::Point2f& start)
+CalcDeviationQuarter::CalcDeviationQuarter(const CalcDeviationQuarter& cdq):
+CalcDeviationHalf(cdq), up(cdq.up)
 {
-    if(curLeft <= start.x && start.x < curLeft + dx &&
-       (up? start.y <= frameSize.height / 2:
-            frameSize.height / 2 < start.y)){
-           return true;
+}
+
+bool CalcDeviationQuarter::isInWindow(const cv::Point2f& start) const
+{
+    cv::Rect window(curLeft, (up? 0: frameSize.height/2),
+                    dx, frameSize.height/2);
+    
+    if(window.contains(start)){
+        return true;
     }
     
     return false;
 }
 
 float CalcDeviationQuarter::calcValue(const cv::Point2f& start,
-                                      const cv::Point2f& end)
+                                      const cv::Point2f& end) const
 {
     float value = end.x - start.x;
     

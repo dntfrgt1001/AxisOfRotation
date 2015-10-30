@@ -15,12 +15,12 @@
 
 class CalcDeviationQuarter: public CalcDeviationHalf{
 public:
-    CalcDeviationQuarter(cv::Size frameSize,
-                         cv::vector<cv::Point2f>& start,
-                         cv::vector<cv::Point2f>& end,
-                         int dx, int shift, bool left, bool up);
-    bool isInWindow(const cv::Point2f& start);
-    float calcValue(const cv::Point2f& start, const cv::Point2f& end);
+    CalcDeviationQuarter(cv::Size& frameSize, int dx, int shift,
+                         bool left, bool up);
+    CalcDeviationQuarter(const CalcDeviationQuarter& cdq);
+
+    bool isInWindow(const cv::Point2f& start) const;
+    float calcValue(const cv::Point2f& start, const cv::Point2f& end) const;
     
 protected:
     bool up;

@@ -14,24 +14,27 @@
 
 class CalcDeviation{
 public:
-    CalcDeviation(cv::Size frameSize,
-             cv::vector<cv::Point2f>& start, cv::vector<cv::Point2f>& end,
-             int dx, int shift);
-    ~CalcDeviation(){};
+    CalcDeviation(cv::Size& frameSize, int dx, int shift);
+    CalcDeviation(const CalcDeviation& cd);
     
-    int calcPixel();
-    float calcWindow();
-    virtual bool isInWindow(const cv::Point2f& start) = 0;
-    virtual float calcValue(const cv::Point2f& start, const cv::Point2f& end) = 0;
+    int calcPixel(const cv::vector<cv::Point2f>& start,
+                  const cv::vector<cv::Point2f>& end);
+    float calcWindow(const cv::vector<cv::Point2f>& start,
+                     const cv::vector<cv::Point2f>& end);
+    
+    virtual bool isInWindow(const cv::Point2f& start) const;
+    virtual float calcValue(const cv::Point2f& start,
+                            const cv::Point2f& end) const;
+    
+    virtual void resetIter();
+    virtual bool isIterEnd() const;
     void incIter();
-    bool isIterEnd();
-    void resetIter();
-    void drawRange(cv::Mat& flowImg);
+    
+    void drawRange(cv::Mat& flowImg) const;
     
 protected:
-    cv::Size frameSize;
-    cv::vector<cv::Point2f>& start;
-    cv::vector<cv::Point2f>& end;
+    CalcDeviation& operator=(const CalcDeviation& cd);
+    cv::Size& frameSize;
     const int dx;
     const int shift;
     int curLeft;

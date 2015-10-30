@@ -9,30 +9,23 @@
 #include "CalcDeviationHalf.hpp"
 #include "CalcDeviation.hpp"
 
-CalcDeviationHalf::CalcDeviationHalf(cv::Size frameSize,
-                                     cv::vector<cv::Point2f>& start,
-                                     cv::vector<cv::Point2f>& end,
+CalcDeviationHalf::CalcDeviationHalf(cv::Size& frameSize,
                                      int dx, int shift, bool left):
-CalcDeviation(frameSize, start, end, dx, shift), left(left)
+CalcDeviation(frameSize, dx, shift), left(left)
 {
 }
 
-bool CalcDeviationHalf::isInWindow(const cv::Point2f& start)
+CalcDeviationHalf::CalcDeviationHalf(const CalcDeviationHalf& cdh):
+CalcDeviation(cdh), left(cdh.left)
 {
-    if(curLeft <= start.x && start.x < curLeft + dx) {
-        return true;
-    }
-    
-    return false;
 }
 
-float CalcDeviationHalf::calcValue(const cv::Point2f& start,
-                                   const cv::Point2f& end)
+void CalcDeviationHalf::resetIter()
 {
-    float value = end.x - start.x;
-    
-    if(frameSize.height / 2 < start.y)
-        value *= -1;
-    
-    return value;
+    curLeft = left? 0: frameSize.width/2;
+}
+
+bool CalcDeviationHalf::isIterEnd() const
+{
+    return left? frameSize.width/2 < curLeft: frameSize.width < curLeft;
 }

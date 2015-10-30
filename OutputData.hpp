@@ -15,16 +15,20 @@
 
 class OutputData {
 public:
-    OutputData(std::string fileName, char seperater);
+    OutputData(const std::string fileName, char seperater);
     ~OutputData();
+    OutputData(const OutputData& od);
     
     void outputTwin(int first, int second);
     void outputTriple(int first, int second, int third);
     
 private:
+    OutputData& operator=(const OutputData& od);
+    
     const std::string fileName;
-    std::ofstream ofs;
     const char seperater;
+    std::ofstream ofs;
+    
 };
 
 #endif /* OutputData_hpp */

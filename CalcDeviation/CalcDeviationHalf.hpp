@@ -15,14 +15,14 @@
 
 class CalcDeviationHalf: public CalcDeviation{
 public:
-    CalcDeviationHalf(cv::Size frameSize,
-                      cv::vector<cv::Point2f>& start,
-                      cv::vector<cv::Point2f>& end,
-                      int dx, int shift, bool left);
-    bool isInWindow(const cv::Point2f& start);
-    float calcValue(const cv::Point2f& start, const cv::Point2f& end);
+    CalcDeviationHalf(cv::Size& frameSize, int dx, int shift, bool left);
+    CalcDeviationHalf(const CalcDeviationHalf& cdh);
+    
+    void resetIter();
+    bool isIterEnd() const;
     
 protected:
+    CalcDeviationHalf& operator=(const CalcDeviationHalf& cdh);
     bool left;
 };
 
