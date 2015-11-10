@@ -35,6 +35,8 @@
 		02C575031BD8A55300E70498 /* process.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02C575011BD8A55300E70498 /* process.cpp */; };
 		02C575071BD8ADAB00E70498 /* Calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02C575051BD8ADAB00E70498 /* Calculator.cpp */; };
 		02C5750A1BDA031900E70498 /* RemoveNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02C575081BDA031900E70498 /* RemoveNoise.cpp */; };
+		02CA31E71BEC845D00A8A6DB /* libopencv_calib3d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02EB3ADA1B9319F7009A46FA /* libopencv_calib3d.dylib */; };
+		02CA31E81BF078B800A8A6DB /* RemoveNoise.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02C575081BDA031900E70498 /* RemoveNoise.cpp */; };
 		02E6CED61B82F4C600BF2959 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 02E6CED51B82F4C600BF2959 /* main.cpp */; };
 		02E6CEDD1B82F63100BF2959 /* libopencv_core.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E6CEDC1B82F63100BF2959 /* libopencv_core.dylib */; };
 		02E6CEDF1B82F63C00BF2959 /* libopencv_highgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 02E6CEDE1B82F63C00BF2959 /* libopencv_highgui.dylib */; };
@@ -200,6 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02C3D0001BDF60D100F9573B /* libopencv_imgproc.dylib in Frameworks */,
+				02CA31E71BEC845D00A8A6DB /* libopencv_calib3d.dylib in Frameworks */,
 				02C3D0021BDF60D800F9573B /* libopencv_core.dylib in Frameworks */,
 				02C3D0011BDF60D400F9573B /* libopencv_highgui.dylib in Frameworks */,
 				02C3D0041BDF60FA00F9573B /* libopencv_video.dylib in Frameworks */,
@@ -617,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02CA31E81BF078B800A8A6DB /* RemoveNoise.cpp in Sources */,
 				02C3CFFC1BDF5DDE00F9573B /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -971,6 +975,7 @@
 				02C3CFFE1BDF5DDE00F9573B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02E6CECD1B82F4C600BF2959 /* Build configuration list for PBXProject "AxisOfRotation" */ = {
 			isa = XCConfigurationList;

@@ -15,8 +15,8 @@
 
 int main(int argc, char* argv[])
 {
-    int frameWidth = 640;
-    int frameHeight = 480;
+    int frameWidth = 480;
+    int frameHeight = 640;
     
     cv::VideoCapture cap(0);
     if(!cap.isOpened()) return -1;
@@ -27,8 +27,6 @@ int main(int argc, char* argv[])
     
     cv::Size flowSize(10, 10);
     cv::Point2f center = cv::Point(frameWidth/2, frameHeight/2);
-    
-    
     
     cv::Mat input;
     cv::Mat flowImg;
@@ -59,9 +57,9 @@ int main(int argc, char* argv[])
         
         cv::calcOpticalFlowPyrLK(prev, next, prev_pts, next_pts, status, error);
         
-        std::vector<cv::Point2f>::const_iterator p = prev_pts.begin();
-        std::vector<cv::Point2f>::const_iterator n = next_pts.begin();
-        for(; n!=next_pts.end(); p++, n++){
+        for(auto p=prev_pts.begin(),n=next_pts.begin();
+            n!=next_pts.end(); p++, n++)
+        {
             cv::line(flowImg, *p, *n, cv::Scalar(255, 0, 0), 2);
             cv::circle(flowImg, *n, 3, cv::Scalar(0, 0, 255), -1, 8);
         }
